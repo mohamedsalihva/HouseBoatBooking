@@ -34,8 +34,8 @@
             </form>
 
             <div class="d-flex">
-                <a href="login/login.php" class="btn btn-outline-primary me-2">Login</a>
-                <a href="register.php" class="btn btn-warning text-primary">Register</a>
+                <a href="frontend/login/login.php" class="btn btn-outline-primary me-2">Login</a>
+                <a href="frontend/signup/signup.php" class="btn btn-warning text-primary">Register</a>
             </div>
         </div>
     </div>

@@ -12,7 +12,7 @@
     <div class="card-body p-4">
         <h3 class="text-center text-primary mb-4">🏝 HouseBoatBooking</h3>
 
-        <form action="login_process.php" method="POST">
+        <form action="../../backend/login_process.php" method="POST">
             <div class="mb-3">
                 <label for="email" class="form-label">Email Address</label>
                 <input type="email" id="email" name="email" class="form-control" placeholder="Enter email" required>

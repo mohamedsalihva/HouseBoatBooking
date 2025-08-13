@@ -1,10 +1,5 @@
 <?php
-// Database connection
-$conn = new mysqli("localhost", "root", "", "houseboat_db");
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once __DIR__ . "/inc/db_connect.php";
 
 // Get form data
 $name     = $_POST['name'];
@@ -12,7 +7,7 @@ $email    = $_POST['email'];
 $password = $_POST['password'];
 $confirm  = $_POST['confirm_password'];
 
-// Password check
+// Check if passwords match
 if ($password !== $confirm) {
     echo "<script>
             alert('Passwords do not match!');
@@ -33,12 +28,18 @@ if ($stmt->execute()) {
             alert('Registration Successful!');
             window.location.href='../frontend/login/login.php';
           </script>";
-    exit();
 } else {
-    echo "<script>
-            alert('Error: " . $stmt->error . "');
-            window.location.href='../frontend/signup/signup.php';
-          </script>";
+    if ($conn->errno == 1062) {
+        echo "<script>
+                alert('Email already registered!');
+                window.location.href='../frontend/signup/signup.php';
+              </script>";
+    } else {
+        echo "<script>
+                alert('Error: " . $stmt->error . "');
+                window.location.href='../frontend/signup/signup.php';
+              </script>";
+    }
 }
 
 $stmt->close();

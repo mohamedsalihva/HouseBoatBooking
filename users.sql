@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 12, 2025 at 03:01 AM
+-- Generation Time: Aug 13, 2025 at 03:16 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -34,20 +34,24 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `role` enum('admin','user') DEFAULT 'user',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `created_at`) VALUES
-(1, 'salih', 'salih@gmal.com', '$2y$10$zF/J8Sv0P0p1h.llQx4y9eHpxchq54oq4sJknVr9ttRyS0DoTuqb.', '2025-08-12 02:51:13'),
-(2, 'salihva', 'salih777@gmal.com', '$2y$10$xMPO7cyu7ItJvpyHLpKnY.oIQAc2GH2wqsRSeON7M3xvF/x6kSSu.', '2025-08-12 02:56:08'),
-(3, 'sae', 'salih8777@gmal.com', '$2y$10$KNlkgsyAxXCkJouF1nUJ6Ok83trxXXAW/YZkyuz0ajBwCmQES5y3q', '2025-08-12 02:57:42'),
-(4, 'sae', 'salih87677@gmal.com', '$2y$10$Pgw1NQ9VffW0lc7khZX3K.q7Ai/GA2WSPell1L9XjOcKI2lTWEQSq', '2025-08-12 02:59:15'),
-(5, 'wqqw', 'salih770007@gmal.com', '$2y$10$/6AlYi3yybHeRmvf0bH5dOISozo2PiSRsZTz4oGdLSc5XdqTvbpaO', '2025-08-12 03:00:26');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `created_at`, `role`) VALUES
+(1, 'salih', 'salih@gmal.com', '$2y$10$zF/J8Sv0P0p1h.llQx4y9eHpxchq54oq4sJknVr9ttRyS0DoTuqb.', '2025-08-12 02:51:13', 'user'),
+(2, 'salihva', 'salih777@gmal.com', '$2y$10$xMPO7cyu7ItJvpyHLpKnY.oIQAc2GH2wqsRSeON7M3xvF/x6kSSu.', '2025-08-12 02:56:08', 'user'),
+(3, 'sae', 'salih8777@gmal.com', '$2y$10$KNlkgsyAxXCkJouF1nUJ6Ok83trxXXAW/YZkyuz0ajBwCmQES5y3q', '2025-08-12 02:57:42', 'user'),
+(4, 'sae', 'salih87677@gmal.com', '$2y$10$Pgw1NQ9VffW0lc7khZX3K.q7Ai/GA2WSPell1L9XjOcKI2lTWEQSq', '2025-08-12 02:59:15', 'user'),
+(5, 'wqqw', 'salih770007@gmal.com', '$2y$10$/6AlYi3yybHeRmvf0bH5dOISozo2PiSRsZTz4oGdLSc5XdqTvbpaO', '2025-08-12 03:00:26', 'user'),
+(6, 'admin', 'admin@gmail.com', '$2y$10$QtRC8GaQi3eoosQg4IjJ0uSgImH8LfrYDzhbwQ9v9V1mFgMUWePpK', '2025-08-13 01:00:42', 'admin'),
+(7, 'sali', 'sali@gmail.com', '$2y$10$aXULRssBI2fG6C4hovkJD.Y4AcIehX/n4tX1olTWCDD10hMazoj4K', '2025-08-13 01:37:31', 'user'),
+(8, 'sam', 'sam@gmail.com', '$2y$10$8gu75TUqRpV8s/HZ6tgtyupk0wQV4ROvKL8hoUlg6jPcFJf8m5pKK', '2025-08-13 01:41:21', 'user');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

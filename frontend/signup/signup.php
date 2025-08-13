@@ -12,34 +12,33 @@
     <div class="card-body p-4">
         <h3 class="text-center text-primary mb-4">🏝 HouseBoatBooking - Sign Up</h3>
 
+        <form action="../../backend/signup_process.php" method="POST">
+            <div class="mb-3">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-control" name="name" required>
+            </div>
 
-<form action="../../backend/signup_process.php" method="POST">
-    <div class="mb-3">
-        <label for="name" class="form-label">Full Name</label>
-        <input type="text" class="form-control" id="name" name="name" required>
-    </div>
+            <div class="mb-3">
+                <label class="form-label">Email address</label>
+                <input type="email" class="form-control" name="email" required>
+            </div>
 
-    <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" name="email" required>
-    </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
 
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" name="password" required>
-    </div>
+            <div class="mb-3">
+                <label class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" name="confirm_password" required>
+            </div>
 
-    <div class="mb-3">
-        <label for="confirm_password" class="form-label">Confirm Password</label>
-        <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
-    </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
 
-    <button type="submit" class="btn btn-primary">Sign Up</button>
-</form>
         <p class="mt-3 text-center">
             Already have an account? <a href="../login/login.php">Login here</a>
         </p>
-
     </div>
 </div>
 

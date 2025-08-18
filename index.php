@@ -25,6 +25,7 @@
   <h1 class="text-center">Welcome to HouseBoatBooking</h1>
   <p class="text-center">Book your dream houseboat today!</p>
 
+
   <!-- Swiper Slider -->
   <div class="container">
     <div class="swiper mySwiper">
@@ -42,6 +43,7 @@
     </div>
   </div>
 </div>
+
 
 <!-- Sample Houseboats Section -->
 <div class="container my-5">
@@ -83,38 +85,11 @@
 
   </div>
 </div>
-<!-- About Section -->
-<section id="about" class="container my-5">
-  <h2 class="text-center mb-4 fw-bold">About Us</h2>
-  <p class="lead text-center text-muted mb-5">
-    At <strong>HouseBoatBooking</strong>, we are passionate about providing unforgettable experiences on the water. With a curated selection of luxurious and comfortable houseboats, we make your dream getaway come true.
-  </p>
 
-  <div class="row">
-    <div class="col-md-6">
-      <h4 class="mb-3">Our Mission</h4>
-      <p>
-        To deliver exceptional houseboat experiences by ensuring top-notch comfort, safety, and personalized service — making every journey memorable for our customers.
-      </p>
-    </div>
 
-    <div class="col-md-6">
-      <h4 class="mb-3">Why Choose Us?</h4>
-      <ul>
-        <li>Wide variety of premium houseboats to suit every taste.</li>
-        <li>Easy and secure booking process.</li>
-        <li>Dedicated customer support for your peace of mind.</li>
-        <li>Unmatched scenic routes and backwater adventures.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="mt-4 text-center">
-    <p>
-      Whether you seek a peaceful retreat or a royal voyage, <strong>HouseBoatBooking</strong> is your trusted partner for all your houseboat travel needs.
-    </p>
-  </div>
-</section>
+<?php include "frontend/includes/about.php";?>
+<?php include "frontend/includes/contact.php";?>
+<?php include "frontend/includes/footer.php";?>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

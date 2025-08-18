@@ -12,7 +12,7 @@ session_start();
       <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
   <li class="nav-item"><a class="nav-link" href="boats.php">Boats</a></li>
   <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-  <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+  <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
       </ul>
 
       <ul class="navbar-nav">

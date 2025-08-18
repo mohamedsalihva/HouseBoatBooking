@@ -1,12 +1,4 @@
-<?php
-session_start();
-
-// Restrict access to only admins
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header("Location: /HouseBoatBooking/frontend/login/login.php");
-    exit();
-}
-?>
+<?php include '../backend/inc/db_connect.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,104 +6,67 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="dashboard.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <h4 class="p-3 border-bottom">Admin Panel</h4>
-        <a href="dashboard.php">Dashboard</a>
-        <a href="#">Manage Users</a>
-        <a href="#">Manage Bookings</a>
-        <a href="#">Reports</a>
-        <a href="/HouseBoatBooking/backend/logout.php">Logout</a>
-    </div>
+<!-- Sidebar -->
+<div class="col-md-2 sidebar">
+    <h4 class="text-center py-3">Admin</h4>
+    <a href="dashboard.php">Dashboard</a>
+    <a href="boats.php">View/Edit Boats</a> <!-- New -->
+    <a href="bookings.php">Manage Bookings</a>
+    <a href="users.php">Manage Users</a>
+    <a href="reports.php">Reports</a>
+    <a href="../logout.php" class="text-danger">Logout</a>
+</div>
 
-    <!-- Main content -->
-    <div class="content">
-        <!-- Top Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-custom mb-4">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Welcome, <?php echo $_SESSION['username']; ?></a>
-            </div>
-        </nav>
 
-        <!-- Dashboard Cards -->
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card shadow-sm border-0">
-                    <div class="card-body">
-                        <h5 class="card-title">Total Users</h5>
-                        <p class="card-text fs-4">120</p>
-                        <a href="#" class="btn btn-primary btn-sm">View</a>
-                    </div>
-                </div>
-            </div>
+<!-- Main Content -->
+<div class="content">
+    <h2 class="fw-bold">Dashboard Overview</h2>
+    <p class="text-muted">Quick summary of the system's status.</p>
 
-            <div class="col-md-4">
-                <div class="card shadow-sm border-0">
-                    <div class="card-body">
-                        <h5 class="card-title">Total Bookings</h5>
-                        <p class="card-text fs-4">58</p>
-                        <a href="#" class="btn btn-success btn-sm">View</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card shadow-sm border-0">
-                    <div class="card-body">
-                        <h5 class="card-title">Pending Requests</h5>
-                        <p class="card-text fs-4">6</p>
-                        <a href="#" class="btn btn-warning btn-sm">View</a>
-                    </div>
-                </div>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm p-3 text-center">
+                <i class="bi bi-calendar-check"></i>
+                <h5 class="mt-3">Total Bookings</h5>
+                <h3 class="fw-bold">
+                    <?php
+                    // Uncomment once bookings table is created
+                    // $result_bookings = $conn->query("SELECT COUNT(*) AS total FROM bookings");
+                    // echo $result_bookings ? $result_bookings->fetch_assoc()['total'] : 0;
+                    echo 0;
+                    ?>
+                </h3>
             </div>
         </div>
 
-        <!-- Table Example -->
-        <div class="mt-5">
-            <h4>Recent Bookings</h4>
-            <div class="table-responsive">
-                <table class="table table-bordered table-striped align-middle">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>#</th>
-                            <th>User</th>
-                            <th>Houseboat</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>Luxury Boat</td>
-                            <td>2025-08-10</td>
-                            <td><span class="badge bg-success">Confirmed</span></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jane Smith</td>
-                            <td>Sunset Cruise</td>
-                            <td>2025-08-12</td>
-                            <td><span class="badge bg-warning">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Michael</td>
-                            <td>Royal Yacht</td>
-                            <td>2025-08-15</td>
-                            <td><span class="badge bg-danger">Cancelled</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="col-md-4">
+            <div class="card shadow-sm p-3 text-center">
+                <i class="bi bi-people"></i>
+                <h5 class="mt-3">Total Users</h5>
+                <h3 class="fw-bold">
+                    <?php
+                    $result_users = $conn->query("SELECT COUNT(*) AS total FROM users");
+                    echo $result_users ? $result_users->fetch_assoc()['total'] : 0;
+                    ?>
+                </h3>
             </div>
         </div>
 
+        <div class="col-md-4">
+            <div class="card shadow-sm p-3 text-center">
+                <i class="bi bi-graph-up"></i>
+                <h5 class="mt-3">Reports</h5>
+                <h3 class="fw-bold">5</h3>
+            </div>
+        </div>
     </div>
+</div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

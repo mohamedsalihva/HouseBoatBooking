@@ -1,0 +1,96 @@
+/* signup.css */
+
+/* Background with Kerala water vibe */
+body {
+    background: linear-gradient(to right, #006994, #00b894);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+/* Signup card container */
+.login-container {
+    background: white;
+    padding: 35px 25px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 360px;
+    position: relative;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Heading */
+.login-container h3 {
+    font-weight: 700;
+    color: #007bff;
+    margin-bottom: 8px;
+    font-size: 22px;
+}
+
+/* Tagline */
+.login-container p {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/* Input fields */
+.form-label {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.form-control {
+    font-size: 14px;
+    padding: 8px 12px;
+    width: 100%;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0px 0px 6px rgba(0, 123, 255, 0.4);
+}
+
+/* Buttons */
+.btn-login {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 6px;
+    background: #007bff;
+    color: white;
+    border: none;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background: #0056b3;
+}
+
+/* Footer link */
+.login-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+/* Smooth fade effect */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

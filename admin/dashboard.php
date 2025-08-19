@@ -19,7 +19,7 @@
     <a href="bookings.php">Manage Bookings</a>
     <a href="users.php">Manage Users</a>
     <a href="reports.php">Reports</a>
-    <a href="../logout.php" class="text-danger">Logout</a>
+    <a href="../backend/logout.php" class="text-danger">Logout</a>
 </div>
 
 

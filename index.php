@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HouseBoatBooking</title>
+  <title>Kerala Cruises</title>
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -21,23 +21,40 @@
 
 <!-- Navbar included from navbar.php -->
 
-<div class="container my-5">
-  <h1 class="text-center">Welcome to HouseBoatBooking</h1>
-  <p class="text-center">Book your dream houseboat today!</p>
-
+<div class="container-fluid my-4">
+  <!-- Hero Section -->
+  <div class="text-center mb-4">
+    <h1 class="fw-bold display-5">Welcome to <span class="text-primary">Kerala Cruises</span></h1>
+    <p class="lead text-muted">Book your dream houseboat today and enjoy a memorable journey on the water</p>
+  </div>
 
   <!-- Swiper Slider -->
-  <div class="container">
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="img/b7.jpg" class="w-100 d-block" alt="Slide 1" />
+  <div class="swiper mySwiper shadow-lg rounded-4 overflow-hidden">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide position-relative">
+        <img src="img/b7.jpg" class="w-100 d-block" alt="Luxury Houseboat" />
+        <div class="position-absolute bottom-0 start-0 w-100 text-white p-3" 
+             style="background: rgba(0,0,0,0.5);">
+          <h4 class="mb-0">Luxury Houseboats</h4>
+          <small>Experience comfort with elegance</small>
         </div>
-        <div class="swiper-slide">
-          <img src="img/img9.avif" class="w-100 d-block" alt="Slide 2" />
+      </div>
+
+      <div class="swiper-slide position-relative">
+        <img src="img/img9.avif" class="w-100 d-block" alt="Backwater View" />
+        <div class="position-absolute bottom-0 start-0 w-100 text-white p-3" 
+             style="background: rgba(0,0,0,0.5);">
+          <h4 class="mb-0">Scenic Backwaters</h4>
+          <small>Unwind with breathtaking views</small>
         </div>
-        <div class="swiper-slide">
-          <img src="img/img10.avif" class="w-100 d-block" alt="Slide 3" />
+      </div>
+
+      <div class="swiper-slide position-relative">
+        <img src="img/img10.avif" class="w-100 d-block" alt="Romantic Cruise" />
+        <div class="position-absolute bottom-0 start-0 w-100 text-white p-3" 
+             style="background: rgba(0,0,0,0.5);">
+          <h4 class="mb-0">Romantic Cruises</h4>
+          <small>Perfect getaway for couples</small>
         </div>
       </div>
     </div>

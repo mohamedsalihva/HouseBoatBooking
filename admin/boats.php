@@ -9,9 +9,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
+
     <link rel="stylesheet" href="css/dashboard.css"> <!-- Use the same CSS -->
 
     <link rel="stylesheet" href="css/dashboard.css">
+
+
+    <link rel="stylesheet" href="css/dashboard.css"> <!-- Use the same CSS -->
 
 </head>
 
@@ -34,6 +38,7 @@
             <h2>Manage Boats</h2>
             <a href="add_boats.php" class="btn btn-primary">+ Add Boat</a>
 
+
     <?php include 'includes/sidebar.php'; ?>
 
     <!-- Main Content -->
@@ -51,6 +56,7 @@
                 </div>
                 <a href="/HouseBoatBooking/admin/boats/add.php" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Add Boat</a>
             </div>
+
 
         </div>
 
@@ -80,6 +86,7 @@
                                 <a href='edit_boat.php?id={$row['id']}' class='btn btn-warning btn-sm'>Edit</a>
                                 <a href='delete_boat.php?id={$row['id']}' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure?\")'>Delete</a>
 
+
                                     <strong>Capacity:</strong> {$row['capacity']} guests<br>
                                     <strong>Price:</strong> ₹{$row['price']} per night
                                 </p>
@@ -88,11 +95,13 @@
                                 <a href='boats/edit.php?id={$row['id']}' class='btn btn-warning btn-sm'><i class='bi bi-pencil'></i> Edit</a>
                                 <a href='boats/delete.php?id={$row['id']}' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete this boat?\")'><i class='bi bi-trash'></i> Delete</a>
 
+
                             </div>
                         </div>
                     </div>";
                 }
             } else {
+
 
                 echo "<div class='col-12 text-center'><p>No boats found.</p></div>";
 
@@ -107,6 +116,9 @@
                     </div>
                 </div>";
 
+
+                echo "<div class='col-12 text-center'><p>No boats found.</p></div>";
+
             }
             ?>
         </div>
@@ -120,3 +132,4 @@
 
 </html>
 
+</html>

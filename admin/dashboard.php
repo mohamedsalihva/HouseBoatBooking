@@ -13,6 +13,8 @@
 
 <!-- Sidebar -->
 
+
+
 <div class="col-md-2 sidebar">
     <h4 class="text-center py-3">Admin</h4>
     <a href="dashboard.php">Dashboard</a>
@@ -63,6 +65,7 @@
                 <i class="bi bi-graph-up"></i>
                 <h5 class="mt-3">Reports</h5>
                 <h3 class="fw-bold">5</h3>
+
 
 <?php include 'includes/sidebar.php'; ?>
 
@@ -129,6 +132,7 @@
                     <p class="text-muted">No recent activity to display.</p>
                 </div>
 
+
             </div>
         </div>
     </div>
@@ -137,5 +141,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
-
+</html>
 

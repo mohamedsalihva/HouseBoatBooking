@@ -1,4 +1,15 @@
-<?php include '../backend/inc/db_connect.php'; ?>
+<?php
+// Check if user is admin
+session_start();
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    header("Location: /HouseBoatBooking/frontend/login/login.php");
+    exit();
+}
+
+// Redirect to the new users management page
+header("Location: /HouseBoatBooking/admin/users/index.php");
+exit();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,8 +70,8 @@
                                     <td><span class='badge bg-" . ($row['role'] == 'admin' ? 'primary' : 'secondary') . "'>{$row['role']}</span></td>
                                     <td>" . date('M j, Y', strtotime($row['created_at'])) . "</td>
                                     <td>
-                                        <a href='/HouseBoatBooking/admin/users/edit.php?id={$row['id']}' class='btn btn-sm btn-outline-primary'><i class='bi bi-pencil'></i> Edit</a>
-                                        <a href='/HouseBoatBooking/admin/users/delete.php?id={$row['id']}' class='btn btn-sm btn-outline-danger' onclick=\"return confirm('Are you sure you want to delete this user?')\"><i class='bi bi-trash'></i> Delete</a>
+                                        <a href='users/edit.php?id={$row['id']}' class='btn btn-sm btn-outline-primary'><i class='bi bi-pencil'></i> Edit</a>
+                                        <a href='users/delete.php?id={$row['id']}' class='btn btn-sm btn-outline-danger' onclick=\"return confirm('Are you sure you want to delete this user?')\"><i class='bi bi-trash'></i> Delete</a>
                                     </td>
                                 </tr>";
                             }

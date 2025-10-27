@@ -1,9 +1,17 @@
 <?php
+// Check if user is admin
+session_start();
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    header("Location: /HouseBoatBooking/frontend/login/login.php");
+    exit();
+}
+
 include '../../backend/inc/db_connect.php';
+include '../includes/sidebar.php';
 
 // Check if ID is provided
 if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header("Location: ../users.php");
+    header("Location: /HouseBoatBooking/admin/users/index.php");
     exit();
 }
 
@@ -18,7 +26,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows == 0) {
-    header("Location: ../users.php");
+    header("Location: /HouseBoatBooking/admin/users/index.php");
     exit();
 }
 
@@ -33,13 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $conn->prepare("UPDATE users SET name = ?, email = ?, role = ? WHERE id = ?");
     $stmt->bind_param("sssi", $name, $email, $role, $user_id);
     if ($stmt->execute()) {
-        $success_message = "User updated successfully!";
-        // Refresh user data after update
-        $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
-        $stmt->bind_param("i", $user_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $user = $result->fetch_assoc();
+        header("Location: /HouseBoatBooking/admin/users/index.php?updated=1");
+        exit();
     } else {
         $error_message = "Error updating user.";
     }
@@ -54,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Edit User</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="/HouseBoatBooking/admin/css/dashboard.css">
 </head>
 <body>
 
@@ -70,12 +73,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/HouseBoatBooking/admin/dashboard.php">Home</a></li>
-                        <li class="breadcrumb-item"><a href="/HouseBoatBooking/admin/users.php">Users</a></li>
+                        <li class="breadcrumb-item"><a href="/HouseBoatBooking/admin/users/index.php">Users</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Edit User</li>
                     </ol>
                 </nav>
             </div>
-            <a href="/HouseBoatBooking/admin/users.php" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Back to Users</a>
+            <a href="/HouseBoatBooking/admin/users/index.php" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Back to Users</a>
         </div>
     </div>
 
@@ -121,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary me-2"><i class="bi bi-check-circle"></i> Update User</button>
-                    <a href="/HouseBoatBooking/admin/users.php" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancel</a>
+                    <a href="/HouseBoatBooking/admin/users/index.php" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancel</a>
                 </div>
             </form>
         </div>

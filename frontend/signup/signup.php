@@ -13,7 +13,7 @@
     <h3> Kerala Cruises</h3>
     <p>Create your account and start your journey</p>
 
-    <form action="../../backend/signup_process.php" method="POST">
+    <form action="../../backend/auth/signup.php" method="POST">
       <div class="mb-3 text-start">
         <label class="form-label">Full Name</label>
         <input type="text" class="form-control" name="name" placeholder="Enter your name" required>

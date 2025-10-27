@@ -1,9 +1,16 @@
 <?php
+// Check if user is admin
+session_start();
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    header("Location: /HouseBoatBooking/frontend/login/login.php");
+    exit();
+}
+
 include '../../backend/inc/db_connect.php';
 
 // Check if ID is provided
 if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header("Location: ../users.php");
+    header("Location: /HouseBoatBooking/admin/users/index.php");
     exit();
 }
 
@@ -14,6 +21,6 @@ $stmt = $conn->prepare("DELETE FROM users WHERE id = ? AND role != 'admin'");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 
-header("Location: ../users.php");
+header("Location: /HouseBoatBooking/admin/users/index.php?deleted=1");
 exit();
 ?>

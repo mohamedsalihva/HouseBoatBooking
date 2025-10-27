@@ -1,15 +1,22 @@
 <?php
+session_start();
 include '../../backend/inc/db_connect.php';
 
-// Check if ID is provided
-if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header("Location: ../boats.php");
+// Check if user is admin
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    header("Location: /HouseBoatBooking/frontend/login/login.php");
     exit();
 }
 
-$boat_id = $_GET['id'];
+// Check if boat ID is provided
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+    header("Location: /HouseBoatBooking/admin/boats/manage/index.php");
+    exit();
+}
 
-// First, get the image name to delete the file
+$boat_id = intval($_GET['id']);
+
+// First, fetch the boat to get image information
 $stmt = $conn->prepare("SELECT image FROM boats WHERE id = ?");
 $stmt->bind_param("i", $boat_id);
 $stmt->execute();
@@ -18,17 +25,37 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     $boat = $result->fetch_assoc();
     
-    // Delete the image file if it exists
-    if (!empty($boat['image']) && file_exists("../../uploads/boats/" . $boat['image'])) {
-        unlink("../../uploads/boats/" . $boat['image']);
+    // Delete images from server
+    if (!empty($boat['image'])) {
+        $images = json_decode($boat['image'], true);
+        if (is_array($images)) {
+            foreach ($images as $image) {
+                $file_path = '../../uploads/boats/' . $image;
+                if (file_exists($file_path)) {
+                    unlink($file_path);
+                }
+            }
+        } else {
+            // Single image (old format)
+            $file_path = '../../uploads/boats/' . $boat['image'];
+            if (file_exists($file_path)) {
+                unlink($file_path);
+            }
+        }
     }
     
-    // Delete the boat record from database
+    // Delete boat from database
     $stmt = $conn->prepare("DELETE FROM boats WHERE id = ?");
     $stmt->bind_param("i", $boat_id);
-    $stmt->execute();
+    
+    if ($stmt->execute()) {
+        header("Location: /HouseBoatBooking/admin/boats/manage/index.php?deleted=1");
+    } else {
+        header("Location: /HouseBoatBooking/admin/boats/manage/index.php?error=1");
+    }
+} else {
+    header("Location: /HouseBoatBooking/admin/boats/manage/index.php?error=1");
 }
 
-header("Location: ../boats.php");
 exit();
 ?>

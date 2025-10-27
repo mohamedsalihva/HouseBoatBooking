@@ -13,7 +13,7 @@
     <h4>Welcome Back</h4>
     <p class="text-muted">Login to continue your Kerala Cruises journey</p>
 
-    <form action="../../backend/login_process.php" method="POST">
+    <form action="../../backend/auth/login.php" method="POST">
       <div class="mb-3 text-start">
         <label for="email" class="form-label">Email Address</label>
         <input type="email" id="email" name="email" class="form-control" placeholder="example@mail.com" required>
@@ -28,7 +28,7 @@
     </form>
 
     <p class="mt-3 mb-0">
-      Don’t have an account? 
+      Don't have an account? 
       <a href="../signup/signup.php">Sign Up</a>
     </p>
   </div>

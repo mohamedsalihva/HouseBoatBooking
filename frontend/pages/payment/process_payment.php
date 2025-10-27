@@ -74,15 +74,14 @@ PaymentLogger::log("Attempting database insertion", [
 error_log("Attempting database insertion with transaction ID: " . $transaction_id);
 
 // Insert booking into database with payment information
-$stmt = $conn->prepare("INSERT INTO bookings (user_id, boat_id, checkin_date, checkout_date, guests, total_price, special_requests, payment_method, payment_status, transaction_id, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("iiissdsssss", 
+$stmt = $conn->prepare("INSERT INTO bookings (user_id, boat_id, checkin_date, checkout_date, guests, total_price, payment_method, payment_status, transaction_id, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("iiissdssss", 
     $booking_data['user_id'], 
     $booking_data['boat_id'], 
     $booking_data['checkin_date'], 
     $booking_data['checkout_date'], 
     $booking_data['guests'], 
     $booking_data['total_price'], 
-    $booking_data['requests'], 
     $booking_data['payment_method'], 
     $payment_status, 
     $transaction_id, 

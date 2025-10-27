@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 
 // Check if boat ID is provided
 if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header("Location: /HouseBoatBooking/admin/boats/manage/index.php");
+    header("Location: /HouseBoatBooking/admin/boats.php");
     exit();
 }
 
@@ -24,7 +24,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows == 0) {
-    header("Location: /HouseBoatBooking/admin/boats/manage/index.php");
+    header("Location: /HouseBoatBooking/admin/boats.php");
     exit();
 }
 
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sssssssi", $boat_name, $boat_type, $capacity, $price, $description, $images_json, $status, $boat_id);
 
     if ($stmt->execute()) {
-        header("Location: /HouseBoatBooking/admin/boats/manage/index.php?updated=1");
+        header("Location: /HouseBoatBooking/admin/boats.php?updated=1");
         exit();
     } else {
         $error = "Error updating boat: " . $conn->error;
@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Edit Boat - Admin Panel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="/HouseBoatBooking/admin/css/dashboard.css" rel="stylesheet">
+    <link href="../css/dashboard.css" rel="stylesheet">
     <style>
         /* Added padding to prevent content from hiding behind sidebar */
         .content {
@@ -141,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/HouseBoatBooking/admin/dashboard.php">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="/HouseBoatBooking/admin/boats/manage/index.php">Boats</a></li>
+                            <li class="breadcrumb-item"><a href="/HouseBoatBooking/admin/boats.php">Boats</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Edit Boat</li>
                         </ol>
                     </nav>
@@ -238,7 +238,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
 
                         <div class="d-flex justify-content-between">
-                            <a href="/HouseBoatBooking/admin/boats/manage/index.php" class="btn btn-secondary">
+                            <a href="/HouseBoatBooking/admin/boats.php" class="btn btn-secondary">
                                 <i class="bi bi-arrow-left me-1"></i> Back to Boats
                             </a>
                             <button type="submit" class="btn btn-primary">

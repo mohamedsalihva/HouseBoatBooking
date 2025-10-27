@@ -10,7 +10,7 @@ include '../../backend/inc/db_connect.php';
 
 // Check if ID is provided
 if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header("Location: /HouseBoatBooking/admin/users/index.php");
+    header("Location: /HouseBoatBooking/admin/users.php");
     exit();
 }
 
@@ -21,6 +21,6 @@ $stmt = $conn->prepare("DELETE FROM users WHERE id = ? AND role != 'admin'");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 
-header("Location: /HouseBoatBooking/admin/users/index.php?deleted=1");
+header("Location: /HouseBoatBooking/admin/users.php?deleted=1");
 exit();
 ?>

@@ -1,6 +1,6 @@
 <?php
-include '../../../backend/inc/db_connect.php';
-include '../../includes/sidebar.php';
+include '../backend/inc/db_connect.php';
+include 'includes/sidebar.php';
 
 // Check if user is admin
 session_start();
@@ -31,7 +31,7 @@ $result = $stmt->get_result();
     <title>Manage Boats - Admin Panel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="/HouseBoatBooking/admin/css/dashboard.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
     <style>
         .boat-card {
             transition: all 0.3s ease;
@@ -193,7 +193,7 @@ $result = $stmt->get_result();
     </style>
 </head>
 <body>
-    <?php include '../../includes/sidebar.php'; ?>
+    <?php include 'includes/sidebar.php'; ?>
 
     <div class="content">
         <div class="content-header">
@@ -245,7 +245,7 @@ $result = $stmt->get_result();
 
             <div class="page-header d-flex justify-content-between align-items-center">
                 <h3 class="mb-0"><i class="bi bi-boat me-2"></i>Boat Management</h3>
-                <a href="add.php" class="btn btn-primary">
+                <a href="boats/add.php" class="btn btn-primary">
                     <i class="bi bi-plus-circle me-1"></i> Add New Boat
                 </a>
             </div>
@@ -338,10 +338,10 @@ $result = $stmt->get_result();
                                     
                                     <div class="mt-auto action-buttons">
                                         <div class="btn-group w-100" role="group">
-                                            <a href="../edit.php?id=<?php echo $row['id']; ?>" class="btn btn-outline-primary">
+                                            <a href="boats/edit.php?id=<?php echo $row['id']; ?>" class="btn btn-outline-primary">
                                                 <i class="bi bi-pencil me-1"></i> Edit
                                             </a>
-                                            <a href="../delete.php?id=<?php echo $row['id']; ?>" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this boat?\n\nBoat: <?php echo htmlspecialchars($row['boat_name']); ?>\nID: <?php echo $row['id']; ?>\n\nThis action cannot be undone.')">
+                                            <a href="boats/delete.php?id=<?php echo $row['id']; ?>" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this boat?\n\nBoat: <?php echo htmlspecialchars($row['boat_name']); ?>\nID: <?php echo $row['id']; ?>\n\nThis action cannot be undone.')">
                                                 <i class="bi bi-trash me-1"></i> Delete
                                             </a>
                                         </div>
@@ -361,12 +361,12 @@ $result = $stmt->get_result();
                     <p class="text-muted mb-4">
                         <?php if (!empty($search)): ?>
                             No boats match your search criteria. 
-                            <a href="index.php" class="btn btn-link">View all boats</a>
+                            <a href="boats.php" class="btn btn-link">View all boats</a>
                         <?php else: ?>
                             You haven't added any boats yet.
                         <?php endif; ?>
                     </p>
-                    <a href="add.php" class="btn btn-primary">
+                    <a href="boats/add.php" class="btn btn-primary">
                         <i class="bi bi-plus-circle me-1"></i> Add Your First Boat
                     </a>
                 </div>

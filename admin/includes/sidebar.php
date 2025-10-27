@@ -9,7 +9,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'index.php' && strpos($_SERVER['REQUEST_URI'], '/boats/') !== false) ? 'active' : ''; ?>" href="/HouseBoatBooking/admin/boats/manage/index.php">
+            <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'boats.php' ? 'active' : ''; ?>" href="/HouseBoatBooking/admin/boats.php">
                 <i class="bi bi-boat"></i> Manage Boats
             </a>
         </li>
@@ -19,7 +19,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'index.php' && strpos($_SERVER['REQUEST_URI'], '/users/') !== false) ? 'active' : (basename($_SERVER['PHP_SELF']) == 'users.php' ? 'active' : ''); ?>" href="/HouseBoatBooking/admin/users/index.php">
+            <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'users.php' ? 'active' : ''; ?>" href="/HouseBoatBooking/admin/users.php">
                 <i class="bi bi-people"></i> Users
             </a>
         </li>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 27, 2025 at 01:58 AM
+-- Generation Time: Oct 27, 2025 at 03:11 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -38,18 +38,25 @@ CREATE TABLE IF NOT EXISTS `boats` (
   `description` text,
   `status` enum('available','maintenance','booked') DEFAULT 'available',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `boats`
 --
 
 INSERT INTO `boats` (`id`, `boat_name`, `boat_type`, `capacity`, `price`, `image`, `description`, `status`) VALUES
-(10, 'Forever Float', 'deluxe', 9, 50000.00, '[\"1761509295_6653_b1.png\",\"1761509295_9779_r1.jpg\"]', 'Experience pure romance and relaxation on this premium single-suite houseboat crafted for couples.', 'available'),
-(11, 'Kairali', 'standard', 3, 70000.00, NULL, 'A traditional Kerala-style houseboat with elegant wooden interiors, authentic Kuttanadan cuisine, and sunset views on the Vembanad Lake.', 'available'),
+(18, 'Vembanad Queen', 'standard', 10, 60000.00, '[\"1761533088_5042_b6.jpg\",\"1761533088_4208_r6.jpg\"]', 'Cruise through the majestic Vembanad Lake in this deluxe houseboat, featuring panoramic glass windows and fine Kerala dining.', 'available'),
+(19, 'Alappuzha Dreams', 'economy', 15, 10000.00, '[\"1761533180_9185_b1.png\",\"1761533180_6686_r1.jpg\"]', 'Family-friendly with local cuisine.', 'available'),
+(20, 'Kettuvallam', 'luxury', 6, 12000.00, '[\"1761533290_3386_b2.jpg\",\"1761533290_7865_r2.jpeg\"]', 'Classic Kerala-style boat offering a pure backwater experience.', 'available'),
 (12, 'Neelathoni', 'economy', 5, 10000.00, '[\"1761509498_1277_b7.png\",\"1761509498_2018_r7.jpg\"]', 'A luxury blue-themed boat designed for comfort and style. Enjoy peaceful rides through the calm backwaters with deluxe rooms and a rooftop deck.', 'available'),
 (14, 'Pathiramanal Cruise', 'deluxe', 4, 13000.00, '[\"1761509628_5885_b10.jpg\",\"1761509628_6581_r10.jpg\"]', 'Named after the famous Pathiramanal Island, this boat offers a scenic ride filled with lush greenery, migratory birds, and calm waters.', 'available'),
-(17, 'Kuttanadan Pearl', 'deluxe', 3, 20000.00, '[\"1761509763_1037_b3.jpg\",\"1761509763_5317_r3.jpg\"]', 'A premium houseboat representing the charm of Kuttanad. Spacious interiors, Kerala meals, and night stays under the stars.', 'available');
+(17, 'Kuttanadan Pearl', 'deluxe', 3, 20000.00, '[\"1761509763_1037_b3.jpg\",\"1761509763_5317_r3.jpg\"]', 'A premium houseboat representing the charm of Kuttanad. Spacious interiors, Kerala meals, and night stays under the stars.', 'available'),
+(22, 'Royal Backwaters', 'standard', 8, 16000.00, '[\"1761533424_2862_b4.jpg\",\"1761533424_6069_r4.jpeg\"]', 'Royal Backwaters is designed for luxury travelers who want a royal stay on water. With spacious rooms, a private balcony, and a dedicated chef, it offers an unforgettable cruise through the calm waters of Kumarakom.', 'available'),
+(23, 'Emerald Queen', 'economy', 10, 23000.00, '[\"1761533480_6343_b9.jpeg\",\"1761533480_8245_r9.jpg\"]', 'Emerald Queen offers a blend of heritage and modern comfort. The boat has elegant wooden interiors, an open lounge area, and provides traditional Kerala meals prepared onboard.', 'available'),
+(26, 'Lotus Crown', 'deluxe', 7, 23000.00, '[\"1761533908_7525_b12.jpeg\",\"1761533908_8164_r12.jpg\"]', 'Lotus Crown is a deluxe houseboat offering an excellent cruise experience across the scenic Vembanad Lake. It includes private cabins, an upper deck for panoramic views, and freshly prepared seafood dishes.', 'available'),
+(27, 'Coconut Paradise', 'economy', 20, 9000.00, '[\"1761533967_6882_b13.avif\"]', 'Coconut Paradise gives guests a traditional Kerala experience surrounded by coconut groves and calm waters. Enjoy relaxing on the deck while watching local village life and sunset views.', 'available'),
+(28, 'Vallam Thoni', 'standard', 18, 3000.00, '[\"1761534055_5114_b14.jpg\",\"1761534055_8185_r14.jpg\"]', 'A classic wooden houseboat designed like the ancient vallam, giving a truly traditional Kerala backwater experience', 'available'),
+(33, 'Periyar cruise', 'luxury', 9, 14000.00, '[\"1761534612_1393_b16.jpg\",\"1761534612_7361_r15.jpg\"]', 'Ideal for family trips, offering calm backwater views and local village sightseeing.', 'available');
 
 -- --------------------------------------------------------
 
@@ -74,7 +81,14 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `boat_id` (`boat_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `bookings`
+--
+
+INSERT INTO `bookings` (`id`, `user_id`, `boat_id`, `checkin_date`, `checkout_date`, `guests`, `total_price`, `status`, `payment_method`, `payment_status`, `transaction_id`, `created_at`) VALUES
+(1, 9, 17, '0000-00-00', '2025-10-30', 2, 20000.00, 'confirmed', 'net_banking', 'completed', 'TXN17615329858911', '2025-10-27 02:43:05');
 
 -- --------------------------------------------------------
 

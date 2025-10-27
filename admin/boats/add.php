@@ -1,6 +1,6 @@
 <?php
-include '../../../backend/inc/db_connect.php';
-include '../../includes/sidebar.php';
+include '../../backend/inc/db_connect.php';
+include '../includes/sidebar.php';
 
 // Check if user is admin
 session_start();
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Handle file upload
     $image_paths = array();
     if (!empty($_FILES['images']['name'][0])) {
-        $upload_dir = '../../../uploads/boats/';
+        $upload_dir = '../../uploads/boats/';
         if (!is_dir($upload_dir)) {
             mkdir($upload_dir, 0777, true);
         }
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sssssss", $boat_name, $boat_type, $capacity, $price, $description, $images_json, $status);
 
     if ($stmt->execute()) {
-        header("Location: /HouseBoatBooking/admin/boats/manage/index.php?success=1"); // redirect to manage boats
+        header("Location: /HouseBoatBooking/admin/boats.php?success=1"); // redirect to manage boats
         exit();
     } else {
         $error = "Error adding boat: " . $conn->error;
@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Add New Boat - Admin Panel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="/HouseBoatBooking/admin/css/dashboard.css" rel="stylesheet">
+    <link href="../css/dashboard.css" rel="stylesheet">
     <style>
         /* Added padding to prevent content from hiding behind sidebar */
         .content {
@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body>
-    <?php include '../../includes/sidebar.php'; ?>
+    <?php include '../includes/sidebar.php'; ?>
 
     <div class="content">
         <div class="content-header">
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/HouseBoatBooking/admin/dashboard.php">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="/HouseBoatBooking/admin/boats/manage/index.php">Boats</a></li>
+                            <li class="breadcrumb-item"><a href="/HouseBoatBooking/admin/boats.php">Boats</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Add New Boat</li>
                         </ol>
                     </nav>
@@ -170,9 +170,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
 
                         <div class="d-flex justify-content-between">
-                            <a href="/HouseBoatBooking/admin/boats/manage/index.php" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Back to Boats</a>
+                            <a href="/HouseBoatBooking/admin/boats.php" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Back to Boats</a>
                             <div>
-                                <a href="/HouseBoatBooking/admin/boats/manage/index.php" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancel</a>
+                                <a href="/HouseBoatBooking/admin/boats.php" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancel</a>
                                 <button type="submit" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Add Boat</button>
                             </div>
                         </div>

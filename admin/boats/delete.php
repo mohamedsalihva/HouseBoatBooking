@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 
 // Check if boat ID is provided
 if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header("Location: /HouseBoatBooking/admin/boats/manage/index.php");
+    header("Location: /HouseBoatBooking/admin/boats.php");
     exit();
 }
 
@@ -49,12 +49,12 @@ if ($result->num_rows > 0) {
     $stmt->bind_param("i", $boat_id);
     
     if ($stmt->execute()) {
-        header("Location: /HouseBoatBooking/admin/boats/manage/index.php?deleted=1");
+        header("Location: /HouseBoatBooking/admin/boats.php?deleted=1");
     } else {
-        header("Location: /HouseBoatBooking/admin/boats/manage/index.php?error=1");
+        header("Location: /HouseBoatBooking/admin/boats.php?error=1");
     }
 } else {
-    header("Location: /HouseBoatBooking/admin/boats/manage/index.php?error=1");
+    header("Location: /HouseBoatBooking/admin/boats.php?error=1");
 }
 
 exit();

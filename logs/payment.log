@@ -15,3 +15,78 @@
 [2025-10-27 02:43:05] Attempting database insertion | Data: {"transaction_id":"TXN17615329858911","payment_status":"completed","payment_method":"net_banking","payment_details_provided":true}
 [2025-10-27 02:43:05] Payment successful | Data: {"booking_id":1,"transaction_id":"TXN17615329858911"}
 [2025-10-27 02:43:05] Redirecting to booking success | Data: {"booking_id":1}
+[2025-10-29 02:33:25] Process payment started | Data: {"session_user_id":"10","post_params":{"order_id":"order_1761705189_8126","amount":"900000","bank_name":"sbi","account_number":"6788789898"},"get_params":[],"session_booking_payment":"exists"}
+[2025-10-29 02:33:25] Payment attempt for booking | Data: {"boat_id":27,"user_id":"10","total_price":9000,"payment_method":"net_banking","payment_data":{"order_id":"order_1761705189_8126","amount":"900000","bank_name":"sbi","account_number":"6788789898"}}
+[2025-10-29 02:33:25] Attempting database insertion | Data: {"transaction_id":"TXN17617052056339","payment_status":"completed","payment_method":"net_banking","payment_details_provided":true}
+[2025-10-29 02:33:25] Payment successful | Data: {"booking_id":2,"transaction_id":"TXN17617052056339"}
+[2025-10-29 02:33:25] Redirecting to booking success | Data: {"booking_id":2}
+[2025-10-29 02:51:57] Process payment started | Data: {"session_user_id":"10","post_params":{"order_id":"order_1761706308_8953","amount":"2000000","bank_name":"hdfc","account_number":"6788789898"},"get_params":[],"session_booking_payment":"exists"}
+[2025-10-29 02:51:57] Payment attempt for booking | Data: {"boat_id":19,"user_id":"10","total_price":20000,"payment_method":"net_banking","payment_data":{"order_id":"order_1761706308_8953","amount":"2000000","bank_name":"hdfc","account_number":"6788789898"}}
+[2025-10-29 02:51:57] Attempting database insertion | Data: {"transaction_id":"TXN17617063175449","payment_status":"completed","payment_method":"net_banking","payment_details_provided":true,"checkin_date":"2025-11-10","checkout_date":"2025-11-12"}
+[2025-10-29 02:51:57] Payment successful | Data: {"booking_id":3,"transaction_id":"TXN17617063175449"}
+[2025-10-29 02:51:57] Redirecting to booking success | Data: {"booking_id":3}
+[2025-10-29 02:58:43] Process payment started | Data: {"session_user_id":"10","post_params":{"order_id":"order_1761706719_4435","amount":"4600000","upi_id":"erfwser@edd"},"get_params":[],"session_booking_payment":"exists"}
+[2025-10-29 02:58:43] Payment attempt for booking | Data: {"boat_id":23,"user_id":"10","total_price":46000,"payment_method":"upi","payment_data":{"order_id":"order_1761706719_4435","amount":"4600000","upi_id":"erfwser@edd"}}
+[2025-10-29 02:58:43] Attempting database insertion | Data: {"transaction_id":"TXN17617067236293","payment_status":"completed","payment_method":"upi","payment_details_provided":true,"checkin_date":"2025-11-03","checkout_date":"2025-11-05"}
+[2025-10-29 02:58:43] Payment successful | Data: {"booking_id":4,"transaction_id":"TXN17617067236293"}
+[2025-10-29 02:58:43] Redirecting to booking success | Data: {"booking_id":4}
+[2025-10-29 03:17:58] Process payment started | Data: {"session_user_id":"10","post_params":{"order_id":"order_1761707871_4927","amount":"2000000","bank_name":"axis","account_number":"6788789898"},"get_params":[],"session_booking_payment":"exists"}
+[2025-10-29 03:17:58] Payment attempt for booking | Data: {"boat_id":12,"user_id":"10","total_price":20000,"payment_method":"net_banking","payment_data":{"order_id":"order_1761707871_4927","amount":"2000000","bank_name":"axis","account_number":"6788789898"}}
+[2025-10-29 03:17:58] Attempting database insertion | Data: {"transaction_id":"TXN17617078786689","payment_status":"completed","payment_method":"net_banking","payment_details_provided":true,"checkin_date":"2025-10-29","checkout_date":"2025-10-31"}
+[2025-10-29 03:17:58] Payment successful | Data: {"booking_id":5,"transaction_id":"TXN17617078786689"}
+[2025-10-29 03:17:58] Redirecting to booking success | Data: {"booking_id":5}
+[2025-10-29 03:24:21] Process payment started | Data: {"session_user_id":"10","post_params":{"order_id":"order_1761708255_3994","amount":"4600000","upi_id":"erfwser@edd"},"get_params":[],"session_booking_payment":"exists"}
+[2025-10-29 03:24:21] Payment attempt for booking | Data: {"boat_id":23,"user_id":"10","total_price":46000,"payment_method":"upi","payment_data":{"order_id":"order_1761708255_3994","amount":"4600000","upi_id":"erfwser@edd"}}
+[2025-10-29 03:24:21] Attempting database insertion | Data: {"transaction_id":"TXN17617082618139","payment_status":"completed","payment_method":"upi","payment_details_provided":true,"checkin_date":"2025-11-01","checkout_date":"2025-11-03"}
+[2025-10-29 03:24:21] Payment successful | Data: {"booking_id":6,"transaction_id":"TXN17617082618139"}
+[2025-10-29 03:24:21] Redirecting to booking success | Data: {"booking_id":6}
+[2025-10-29 03:32:55] Process payment started | Data: {"session_user_id":"10","post_params":{"order_id":"order_1761708770_6196","amount":"1300000","upi_id":"sali@oksbi"},"get_params":[],"session_booking_payment":"exists"}
+[2025-10-29 03:32:55] Payment attempt for booking | Data: {"boat_id":14,"user_id":"10","total_price":13000,"payment_method":"upi","payment_data":{"order_id":"order_1761708770_6196","amount":"1300000","upi_id":"sali@oksbi"}}
+[2025-10-29 03:32:55] Attempting database insertion | Data: {"transaction_id":"TXN17617087751738","payment_status":"completed","payment_method":"upi","payment_details_provided":true,"checkin_date":"2025-11-01","checkout_date":"2025-11-02"}
+[2025-10-29 03:32:55] Payment successful | Data: {"booking_id":7,"transaction_id":"TXN17617087751738"}
+[2025-10-29 03:32:55] Redirecting to booking success | Data: {"booking_id":7}
+[2025-10-29 03:38:59] Process payment started | Data: {"session_user_id":"10","post_params":{"order_id":"order_1761709134_6575","amount":"2000000","upi_id":"sali@oksbi"},"get_params":[],"session_booking_payment":"exists"}
+[2025-10-29 03:38:59] Payment attempt for booking | Data: {"boat_id":17,"user_id":"10","total_price":20000,"payment_method":"upi","payment_data":{"order_id":"order_1761709134_6575","amount":"2000000","upi_id":"sali@oksbi"}}
+[2025-10-29 03:38:59] Attempting database insertion | Data: {"transaction_id":"TXN17617091395827","payment_status":"completed","payment_method":"upi","payment_details_provided":true,"checkin_date":"2025-10-29","checkout_date":"2025-10-30"}
+[2025-10-29 03:38:59] Payment successful | Data: {"booking_id":8,"transaction_id":"TXN17617091395827"}
+[2025-10-29 03:38:59] Redirecting to booking success | Data: {"booking_id":8}
+[2025-10-29 03:48:35] Process payment started | Data: {"session_user_id":"10","post_params":{"order_id":"order_1761709710_4058","amount":"2300000","bank_name":"icici","account_number":"6788789898"},"get_params":[],"session_booking_payment":"exists"}
+[2025-10-29 03:48:35] Payment attempt for booking | Data: {"boat_id":26,"user_id":"10","total_price":23000,"payment_method":"net_banking","payment_data":{"order_id":"order_1761709710_4058","amount":"2300000","bank_name":"icici","account_number":"6788789898"}}
+[2025-10-29 03:48:35] Attempting database insertion | Data: {"transaction_id":"TXN17617097157705","payment_status":"completed","payment_method":"net_banking","payment_details_provided":true,"checkin_date":"2025-11-12","checkout_date":"2025-11-13"}
+[2025-10-29 03:48:35] Payment successful | Data: {"booking_id":9,"transaction_id":"TXN17617097157705"}
+[2025-10-29 03:48:35] Redirecting to booking success | Data: {"booking_id":9}
+[2025-10-29 04:05:00] Process payment started | Data: {"session_user_id":"10","post_params":{"order_id":"order_1761710695_4652","amount":"1800000","upi_id":"sali@oksbi"},"get_params":[],"session_booking_payment":"exists"}
+[2025-10-29 04:05:00] Payment attempt for booking | Data: {"boat_id":27,"user_id":"10","total_price":18000,"payment_method":"upi","payment_data":{"order_id":"order_1761710695_4652","amount":"1800000","upi_id":"sali@oksbi"}}
+[2025-10-29 04:05:00] Attempting database insertion | Data: {"transaction_id":"TXN17617107006711","payment_status":"completed","payment_method":"upi","payment_details_provided":true,"checkin_date":"2025-11-05","checkout_date":"2025-11-07"}
+[2025-10-29 04:05:00] Payment successful | Data: {"booking_id":10,"transaction_id":"TXN17617107006711"}
+[2025-10-29 04:05:00] Redirecting to booking success | Data: {"booking_id":10}
+[2025-10-29 04:11:04] Process payment started | Data: {"session_user_id":"10","post_params":{"order_id":"order_1761711058_7590","amount":"1300000","bank_name":"hdfc","account_number":"6788789898"},"get_params":[],"session_booking_payment":"exists"}
+[2025-10-29 04:11:04] Payment attempt for booking | Data: {"boat_id":14,"user_id":"10","total_price":13000,"payment_method":"net_banking","payment_data":{"order_id":"order_1761711058_7590","amount":"1300000","bank_name":"hdfc","account_number":"6788789898"}}
+[2025-10-29 04:11:04] Attempting database insertion | Data: {"transaction_id":"TXN17617110648209","payment_status":"completed","payment_method":"net_banking","payment_details_provided":true,"checkin_date":"2025-11-05","checkout_date":"2025-11-06"}
+[2025-10-29 04:11:04] Payment successful | Data: {"booking_id":11,"transaction_id":"TXN17617110648209"}
+[2025-10-29 04:11:04] Redirecting to booking success | Data: {"booking_id":11}
+[2025-10-29 04:12:54] Process payment started | Data: {"session_user_id":"10","post_params":{"order_id":"order_1761711167_9885","amount":"1800000","bank_name":"hdfc","account_number":"6788789898"},"get_params":[],"session_booking_payment":"exists"}
+[2025-10-29 04:12:54] Payment attempt for booking | Data: {"boat_id":27,"user_id":"10","total_price":18000,"payment_method":"net_banking","payment_data":{"order_id":"order_1761711167_9885","amount":"1800000","bank_name":"hdfc","account_number":"6788789898"}}
+[2025-10-29 04:12:54] Attempting database insertion | Data: {"transaction_id":"TXN17617111741355","payment_status":"completed","payment_method":"net_banking","payment_details_provided":true,"checkin_date":"2025-11-26","checkout_date":"2025-11-28"}
+[2025-10-29 04:12:54] Payment successful | Data: {"booking_id":12,"transaction_id":"TXN17617111741355"}
+[2025-10-29 04:12:54] Redirecting to booking success | Data: {"booking_id":12}
+[2025-10-29 04:14:59] Process payment started | Data: {"session_user_id":"10","post_params":{"order_id":"order_1761711293_6522","amount":"2000000","upi_id":"sali@oksbi"},"get_params":[],"session_booking_payment":"exists"}
+[2025-10-29 04:14:59] Payment attempt for booking | Data: {"boat_id":19,"user_id":"10","total_price":20000,"payment_method":"upi","payment_data":{"order_id":"order_1761711293_6522","amount":"2000000","upi_id":"sali@oksbi"}}
+[2025-10-29 04:14:59] Attempting database insertion | Data: {"transaction_id":"TXN17617112996012","payment_status":"completed","payment_method":"upi","payment_details_provided":true,"checkin_date":"2025-12-02","checkout_date":"2025-12-04"}
+[2025-10-29 04:14:59] Payment successful | Data: {"booking_id":13,"transaction_id":"TXN17617112996012"}
+[2025-10-29 04:14:59] Redirecting to booking success | Data: {"booking_id":13}
+[2025-10-29 04:38:26] Process payment started | Data: {"session_user_id":"10","post_params":{"order_id":"order_1761712701_9768","amount":"4500000","upi_id":"sali@oksbi"},"get_params":[],"session_booking_payment":"exists"}
+[2025-10-29 04:38:26] Payment attempt for booking | Data: {"boat_id":27,"user_id":"10","total_price":45000,"payment_method":"upi","payment_data":{"order_id":"order_1761712701_9768","amount":"4500000","upi_id":"sali@oksbi"}}
+[2025-10-29 04:38:26] Attempting database insertion | Data: {"transaction_id":"TXN17617127062324","payment_status":"completed","payment_method":"upi","payment_details_provided":true,"checkin_date":"2025-11-06","checkout_date":"2025-11-11"}
+[2025-10-29 04:38:26] Payment successful | Data: {"booking_id":27,"transaction_id":"TXN17617127062324"}
+[2025-10-29 04:38:26] Redirecting to booking success | Data: {"booking_id":27}
+[2025-10-29 04:40:44] Process payment started | Data: {"session_user_id":"10","post_params":{"order_id":"order_1761712837_9419","amount":"2300000","upi_id":"sali@oksbi"},"get_params":[],"session_booking_payment":"exists"}
+[2025-10-29 04:40:44] Payment attempt for booking | Data: {"boat_id":26,"user_id":"10","total_price":23000,"payment_method":"upi","payment_data":{"order_id":"order_1761712837_9419","amount":"2300000","upi_id":"sali@oksbi"}}
+[2025-10-29 04:40:44] Attempting database insertion | Data: {"transaction_id":"TXN17617128448614","payment_status":"completed","payment_method":"upi","payment_details_provided":true,"checkin_date":"2025-10-31","checkout_date":"2025-11-01"}
+[2025-10-29 04:40:44] Payment successful | Data: {"booking_id":28,"transaction_id":"TXN17617128448614"}
+[2025-10-29 04:40:44] Redirecting to booking success | Data: {"booking_id":28}
+[2025-10-29 06:18:04] Process payment started | Data: {"session_user_id":"10","post_params":{"order_id":"order_1761718679_1228","amount":"2400000","upi_id":"sali@oksbi"},"get_params":[],"session_booking_payment":"exists"}
+[2025-10-29 06:18:04] Payment attempt for booking | Data: {"boat_id":20,"user_id":"10","total_price":24000,"payment_method":"upi","payment_data":{"order_id":"order_1761718679_1228","amount":"2400000","upi_id":"sali@oksbi"}}
+[2025-10-29 06:18:04] Attempting database insertion | Data: {"transaction_id":"TXN17617186846274","payment_status":"completed","payment_method":"upi","payment_details_provided":true,"checkin_date":"2025-11-06","checkout_date":"2025-11-08"}
+[2025-10-29 06:18:04] Payment successful | Data: {"booking_id":29,"transaction_id":"TXN17617186846274"}
+[2025-10-29 06:18:04] Redirecting to booking success | Data: {"booking_id":29}

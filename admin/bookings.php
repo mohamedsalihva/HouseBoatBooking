@@ -152,6 +152,48 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                 <tbody>';
                     
                     while ($row = $result->fetch_assoc()) {
+                        // Format dates properly
+                        $checkin_date = $row['checkin_date'];
+                        $checkout_date = $row['checkout_date'];
+                        
+                        // Debug output to see what we're getting from the database
+                        error_log("Admin Booking ID: " . $row['id'] . " - Checkin: " . $checkin_date . " - Checkout: " . $checkout_date);
+                        
+                        // Format the dates for display with more robust checking
+                        if (!empty($checkin_date) && $checkin_date !== '0000-00-00' && $checkin_date !== '1970-01-01') {
+                            // Try to format the date, if it fails, show the raw value
+                            $formatted_checkin = @date('M j, Y', strtotime($checkin_date));
+                            if ($formatted_checkin === false) {
+                                $formatted_checkin = $checkin_date;
+                            }
+                        } else {
+                            $formatted_checkin = 'Not specified';
+                        }
+                        
+                        if (!empty($checkout_date) && $checkout_date !== '0000-00-00' && $checkout_date !== '1970-01-01') {
+                            // Try to format the date, if it fails, show the raw value
+                            $formatted_checkout = @date('M j, Y', strtotime($checkout_date));
+                            if ($formatted_checkout === false) {
+                                $formatted_checkout = $checkout_date;
+                            }
+                        } else {
+                            $formatted_checkout = 'Not specified';
+                        }
+                        
+                        // Calculate nights only if both dates are valid
+                        $nights = 'N/A';
+                        if (!empty($checkin_date) && $checkin_date !== '0000-00-00' && 
+                            !empty($checkout_date) && $checkout_date !== '0000-00-00') {
+                            $checkin_timestamp = strtotime($checkin_date);
+                            $checkout_timestamp = strtotime($checkout_date);
+                            
+                            if ($checkin_timestamp !== false && $checkout_timestamp !== false) {
+                                $nights = ceil(($checkout_timestamp - $checkin_timestamp) / (60 * 60 * 24));
+                                // Ensure we don't have negative nights
+                                if ($nights < 0) $nights = 0;
+                            }
+                        }
+                        
                         echo '<tr>
                                 <td>' . $row['id'] . '</td>
                                 <td>
@@ -160,8 +202,8 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                                 </td>
                                 <td>' . htmlspecialchars($row['boat_name']) . '</td>
                                 <td>
-                                    ' . date('M j, Y', strtotime($row['checkin_date'] ?? 'now')) . ' - ' . date('M j, Y', strtotime($row['checkout_date'] ?? 'now')) . '<br>
-                                    <small class="text-muted">' . (isset($row['checkin_date']) && isset($row['checkout_date']) ? ceil((strtotime($row['checkout_date']) - strtotime($row['checkin_date'])) / (60 * 60 * 24)) : 'N/A') . ' nights</small>
+                                    ' . $formatted_checkin . ' - ' . $formatted_checkout . '<br>
+                                    <small class="text-muted">' . $nights . ' nights</small>
                                 </td>
                                 <td>' . $row['guests'] . '</td>
                                 <td>₹' . number_format($row['total_price']) . '</td>

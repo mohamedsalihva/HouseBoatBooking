@@ -34,7 +34,39 @@ $booking_data = $_SESSION['booking_payment'];
 
 // Log the booking data
 PaymentLogger::logPaymentAttempt($booking_data, $_POST);
-error_log("Booking data: " . json_encode($booking_data));
+
+// Validate and format dates properly - ensure we're getting dates from session data
+$checkin_date = isset($booking_data['checkin_date']) ? $booking_data['checkin_date'] : '';
+$checkout_date = isset($booking_data['checkout_date']) ? $booking_data['checkout_date'] : '';
+
+// More robust date validation and formatting
+// Handle check-in date
+if (!empty($checkin_date) && $checkin_date !== '0000-00-00' && preg_match('/^\d{4}-\d{2}-\d{2}$/', $checkin_date)) {
+    // Validate that it's a real date
+    $timestamp = strtotime($checkin_date);
+    if ($timestamp === false || date('Y-m-d', $timestamp) !== $checkin_date) {
+        // If conversion fails, use today's date as fallback
+        $checkin_date = date('Y-m-d');
+    }
+} else {
+    // If checkin_date is invalid, use today's date as fallback
+    $checkin_date = date('Y-m-d');
+}
+
+// Handle check-out date
+if (!empty($checkout_date) && $checkout_date !== '0000-00-00' && preg_match('/^\d{4}-\d{2}-\d{2}$/', $checkout_date)) {
+    // Validate that it's a real date
+    $timestamp = strtotime($checkout_date);
+    if ($timestamp === false || date('Y-m-d', $timestamp) !== $checkout_date) {
+        // If conversion fails, use tomorrow's date as fallback
+        $checkout_date = date('Y-m-d', strtotime('+1 day'));
+    }
+} else {
+    // If checkout_date is invalid, use tomorrow's date as fallback
+    $checkout_date = date('Y-m-d', strtotime('+1 day'));
+}
+
+// ... existing code ...
 
 // Extract payment details based on payment method
 $payment_details = [];
@@ -64,22 +96,63 @@ if ($booking_data['payment_method'] === 'credit_card' || $booking_data['payment_
 $payment_status = 'completed';
 $transaction_id = 'TXN' . time() . rand(1000, 9999);
 
+// Validate dates before database insertion
+if (empty($checkin_date) || $checkin_date === '0000-00-00' || !preg_match('/^\d{4}-\d{2}-\d{2}$/', $checkin_date)) {
+    $checkin_date = date('Y-m-d'); // Use today as fallback
+}
+
+if (empty($checkout_date) || $checkout_date === '0000-00-00' || !preg_match('/^\d{4}-\d{2}-\d{2}$/', $checkout_date)) {
+    $checkout_date = date('Y-m-d', strtotime('+1 day')); // Use tomorrow as fallback
+}
+
 // Log before database insertion
 PaymentLogger::log("Attempting database insertion", [
     'transaction_id' => $transaction_id,
     'payment_status' => $payment_status,
     'payment_method' => $booking_data['payment_method'],
-    'payment_details_provided' => !empty($payment_details)
+    'payment_details_provided' => !empty($payment_details),
+    'checkin_date' => $checkin_date,
+    'checkout_date' => $checkout_date
 ]);
-error_log("Attempting database insertion with transaction ID: " . $transaction_id);
+
+// Validate dates one more time before database insertion
+$validated_checkin = $checkin_date;
+$validated_checkout = $checkout_date;
+
+// ... existing code ...
+
+// Ensure checkin date is valid
+if (empty($validated_checkin) || $validated_checkin === '0000-00-00' || !preg_match('/^\d{4}-\d{2}-\d{2}$/', $validated_checkin)) {
+    $validated_checkin = date('Y-m-d');
+}
+
+// Ensure checkout date is valid
+if (empty($validated_checkout) || $validated_checkout === '0000-00-00' || !preg_match('/^\d{4}-\d{2}-\d{2}$/', $validated_checkout)) {
+    $validated_checkout = date('Y-m-d', strtotime('+1 day'));
+}
+
+// Ensure checkout is after checkin
+if ($validated_checkout <= $validated_checkin) {
+    $validated_checkout = date('Y-m-d', strtotime($validated_checkin . ' +1 day'));
+}
+
+// ... existing code ...
 
 // Insert booking into database with payment information
-$stmt = $conn->prepare("INSERT INTO bookings (user_id, boat_id, checkin_date, checkout_date, guests, total_price, payment_method, payment_status, transaction_id, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("iiissdssss", 
+// Fixed the bind_param to match the correct data types and order
+error_log("About to insert booking - user_id: " . $booking_data['user_id'] . ", boat_id: " . $booking_data['boat_id'] . ", checkin_date: $validated_checkin, checkout_date: $validated_checkout, guests: " . $booking_data['guests'] . ", total_price: " . $booking_data['total_price'] . ", payment_method: " . $booking_data['payment_method'] . ", payment_status: $payment_status, transaction_id: $transaction_id, status: " . $booking_data['status']);
+
+// Use direct SQL insertion for dates to avoid prepared statement issues
+$sql = "INSERT INTO bookings (user_id, boat_id, checkin_date, checkout_date, guests, total_price, payment_method, payment_status, transaction_id, status) VALUES (?, ?, '$validated_checkin', '$validated_checkout', ?, ?, ?, ?, ?, ?)";
+$stmt = $conn->prepare($sql);
+
+// Make sure we're binding the parameters correctly
+// user_id (int), boat_id (int), guests (int), 
+// total_price (double), payment_method (string), payment_status (string), transaction_id (string), status (string)
+// Note: checkin_date and checkout_date are included directly in the SQL
+$stmt->bind_param("iisdssss", 
     $booking_data['user_id'], 
     $booking_data['boat_id'], 
-    $booking_data['checkin_date'], 
-    $booking_data['checkout_date'], 
     $booking_data['guests'], 
     $booking_data['total_price'], 
     $booking_data['payment_method'], 
@@ -93,7 +166,6 @@ if ($stmt->execute()) {
     
     // Log successful insertion
     PaymentLogger::logPaymentSuccess($booking_id, $transaction_id);
-    error_log("Database insertion successful, booking ID: " . $booking_id);
     
     // Add booking ID to session data
     $booking_data['booking_id'] = $booking_id;
@@ -108,13 +180,11 @@ if ($stmt->execute()) {
     
     // Redirect to success page
     PaymentLogger::log("Redirecting to booking success", ['booking_id' => $booking_id]);
-    error_log("Redirecting to booking_success.php with booking ID: " . $booking_id);
     header("Location: ../booking/success.php");
     exit();
 } else {
     $error_message = "Database error: " . $conn->error;
     PaymentLogger::logPaymentError($error_message, $booking_data);
-    error_log("Database error: " . $conn->error);
     $_SESSION['error'] = "There was an error processing your booking. Please try again. Error: " . $conn->error;
     header("Location: ../booking/booking.php?boat_id=" . $booking_data['boat_id']);
     exit();

@@ -95,11 +95,39 @@ unset($_SESSION['booking_details']);
                                     </tr>
                                     <tr>
                                         <th>Check-in Date</th>
-                                        <td><?php echo htmlspecialchars($booking_details['checkin_date']); ?></td>
+                                        <td><?php 
+                                            // Format the check-in date properly with more robust checking
+                                            $checkin_date = $booking_details['checkin_date'] ?? '';
+                                            if (!empty($checkin_date) && $checkin_date !== '0000-00-00' && $checkin_date !== '1970-01-01') {
+                                                // Try to format the date, if it fails, show the raw value
+                                                $formatted_checkin = @date('F j, Y', strtotime($checkin_date));
+                                                if ($formatted_checkin === false) {
+                                                    echo $checkin_date;
+                                                } else {
+                                                    echo $formatted_checkin;
+                                                }
+                                            } else {
+                                                echo 'Not specified';
+                                            }
+                                        ?></td>
                                     </tr>
                                     <tr>
                                         <th>Check-out Date</th>
-                                        <td><?php echo htmlspecialchars($booking_details['checkout_date']); ?></td>
+                                        <td><?php 
+                                            // Format the check-out date properly with more robust checking
+                                            $checkout_date = $booking_details['checkout_date'] ?? '';
+                                            if (!empty($checkout_date) && $checkout_date !== '0000-00-00' && $checkout_date !== '1970-01-01') {
+                                                // Try to format the date, if it fails, show the raw value
+                                                $formatted_checkout = @date('F j, Y', strtotime($checkout_date));
+                                                if ($formatted_checkout === false) {
+                                                    echo $checkout_date;
+                                                } else {
+                                                    echo $formatted_checkout;
+                                                }
+                                            } else {
+                                                echo 'Not specified';
+                                            }
+                                        ?></td>
                                     </tr>
                                     <tr>
                                         <th>Number of Guests</th>

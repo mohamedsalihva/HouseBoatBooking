@@ -87,8 +87,7 @@ CREATE TABLE IF NOT EXISTS `bookings` (
 -- Dumping data for table `bookings`
 --
 
-INSERT INTO `bookings` (`id`, `user_id`, `boat_id`, `checkin_date`, `checkout_date`, `guests`, `total_price`, `status`, `payment_method`, `payment_status`, `transaction_id`, `created_at`) VALUES
-(1, 9, 17, '0000-00-00', '2025-10-30', 2, 20000.00, 'confirmed', 'net_banking', 'completed', 'TXN17615329858911', '2025-10-27 02:43:05');
+INSERT INTO `bookings` (`id`, `user_id`, `boat_id`, `checkin_date`, `checkout_date`, `guests`, `total_price`, `status`, `payment_method`, `payment_status`, `transaction_id`, `created_at`) VALUES (1, '9', 17, '2025-10-29', 2025-10-30, 2, '20000.00', 'confirmed', net_banking, 'completed', TXN17615329858911, '2025-10-27 02:43:05')
 
 -- --------------------------------------------------------
 

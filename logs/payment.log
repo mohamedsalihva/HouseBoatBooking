@@ -90,3 +90,8 @@
 [2025-10-29 06:18:04] Attempting database insertion | Data: {"transaction_id":"TXN17617186846274","payment_status":"completed","payment_method":"upi","payment_details_provided":true,"checkin_date":"2025-11-06","checkout_date":"2025-11-08"}
 [2025-10-29 06:18:04] Payment successful | Data: {"booking_id":29,"transaction_id":"TXN17617186846274"}
 [2025-10-29 06:18:04] Redirecting to booking success | Data: {"booking_id":29}
+[2025-10-29 07:14:25] Process payment started | Data: {"session_user_id":"10","post_params":{"order_id":"order_1761721980_6964","amount":"140300000","bank_name":"sbi","account_number":"fgdfhgfjhgljh"},"get_params":[],"session_booking_payment":"exists"}
+[2025-10-29 07:14:25] Payment attempt for booking | Data: {"boat_id":23,"user_id":"10","total_price":1403000,"payment_method":"net_banking","payment_data":{"order_id":"order_1761721980_6964","amount":"140300000","bank_name":"sbi","account_number":"fgdfhgfjhgljh"}}
+[2025-10-29 07:14:25] Attempting database insertion | Data: {"transaction_id":"TXN17617220652247","payment_status":"completed","payment_method":"net_banking","payment_details_provided":true,"checkin_date":"2026-08-14","checkout_date":"2026-10-14"}
+[2025-10-29 07:14:25] Payment successful | Data: {"booking_id":30,"transaction_id":"TXN17617220652247"}
+[2025-10-29 07:14:25] Redirecting to booking success | Data: {"booking_id":30}
